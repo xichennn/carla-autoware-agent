@@ -1,0 +1,57 @@
+<launch>
+
+  <arg name='role_name' default='ego_vehicle'/>
+  <arg name='use_ground_truth_localization' default='true'/>
+  <arg name='use_ground_truth_detections' default='true'/>
+  <arg name='use_manual_control' default='false'/>
+
+  <!--
+    # sensing #
+  -->
+  <include file='$(find carla_autoware_agent)/launch/multi-agents/my_sensing.launch'>
+    <arg name='role_name' value='$(arg role_name)'/>
+  </include>
+
+  <!--
+    # wayarea2grid #
+    Out: /grid_map_wayarea [grid_map_msgs::GridMap]
+    Out: /occupancy_wayarea [nav_msgs::OccupancyGrid]
+  -->
+  <include file='$(find object_map)/launch/wayarea2grid.launch'>
+  </include>
+
+  <!--
+    # localization #
+  -->
+  <group if='$(arg use_ground_truth_localization)'>
+    <remap from='/ground_truth/current_pose' to='/$(arg role_name)/current_pose'/>
+    <remap from='/ground_truth/current_velocity' to='/$(arg role_name)/current_velocity'/>
+    <node pkg='carla_autoware_bridge' type='carla_to_autoware_localization' name='carla_to_autoware_localization'/>
+  </group>
+
+  <!--
+    # detection #
+  -->
+  <group if='$(arg use_ground_truth_detections)'>
+    <remap from='/ground_truth/objects' to='/$(arg role_name)/prediction/motion_predictor/objects'/>
+    <node pkg='carla_autoware_bridge' type='carla_to_autoware_detected_objects' name='carla_to_autoware_detected_objects' output='screen'/>
+  </group>
+
+
+  <!--
+    # mission planning #
+  -->
+  <include file='$(find carla_autoware_agent)/launch/multi-agents/my_mission_planning.launch'>
+    <arg name='role_name' value='$(arg role_name)'/>
+  </include>
+
+  <!--
+    # motion planning #
+  -->
+  <include file='$(find carla_autoware_agent)/launch/multi-agents/my_motion_planning.launch'>
+    <arg name='role_name' value='$(arg role_name)'/>
+  </include>
+
+
+
+</launch>
