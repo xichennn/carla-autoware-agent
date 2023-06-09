@@ -17,15 +17,12 @@ Please note we need different agent names in different docker images
 ./CarlaUE4.sh
 ```
 
-2. Run the `carla-autoware` image using ROS master : 
+2. Run multiple `carla-autoware` images and in each of them run an Autoware agent using different ROS masters: 
 
 ```sh
-./run_.sh
+./run_test.sh
 ```
+This opens two tabs, one for run_hero.sh and one for run_hero1.sh\
+I'm using mate terminal here, please modify accordingly.
 
-This will start an interactive shell inside the container. To start the agent run the following command:
 
-```sh
-roslaunch carla_autoware_agent carla_autoware_agent.launch town:=Town01
-```
-Bash script run_hero initiate 
