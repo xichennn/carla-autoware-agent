@@ -5,8 +5,7 @@ run multiple autoware agents in CARLA simulator
 Follow the CARLA-Autoware setup instructions [here](https://github.com/carla-simulator/carla-autoware)
 
 ## Shell script modification
-In the original run.sh, add a bash command which specifies the ROS master in the docker image and starts the agent\
-As shown in run_hero.sh and run_hero1.sh\
+In the original run.sh, add a bash command which specifies the ROS master in the docker image and starts the agent, as shown in run_hero.sh and run_hero1.sh\
 Please note we need different agent names in different docker images
 
 # Run multiple agents
