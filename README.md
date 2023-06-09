@@ -1,7 +1,7 @@
 # multiagent-automation
-run multiple autoware agents in CARLA simulator
+Run multiple autoware agents in CARLA simulator
 
-## setup
+## Setup
 Follow the CARLA-Autoware setup instructions [here](https://github.com/carla-simulator/carla-autoware)
 
 ## Shell script modification
