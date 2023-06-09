@@ -15,8 +15,17 @@ Please note we need different agent names in different docker images
 ```
 ./CarlaUE4.sh
 ```
+2. Run the `carla-autoware` image and start the first agent hero: 
 
-2. Run multiple `carla-autoware` images and in each of them run an Autoware agent using different ROS masters: 
+```sh
+./run_hero.sh
+```
+3. In another tab, run the `carla-autoware` image and start the second agent hero1: 
+
+```sh
+./run_hero1.sh
+```
+4. Alternatively, we can use a shell script to start agent hero and hero1 simutaneously: 
 
 ```sh
 ./run_test.sh
