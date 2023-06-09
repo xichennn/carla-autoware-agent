@@ -1,7 +1,7 @@
 # multiagent-automation
 Run multiple autoware agents in CARLA simulator
 <!-- ![multiagents](multiagents.png) -->
-<img src="multiagents.png" width="50%" height="50%">
+<img src="multiagents.png" width="60%" height="50%">
 
 ## Setup
 Follow the CARLA-Autoware setup instructions [here](https://github.com/carla-simulator/carla-autoware)
